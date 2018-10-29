@@ -1,0 +1,24 @@
+{
+  "menu": [
+    {
+      "id": "dramalist",
+      "pattern": "drama",
+      "title": "連續劇"
+    },
+    {
+      "id": "movielist",
+      "pattern": "movie",
+      "title": "電影"
+    },
+    {
+      "id": "history",
+      "pattern": "history",
+      "title": "最近觀看"
+    },
+    {
+      "id": "setting",
+      "pattern": "setting",
+      "title": "設定"
+    }
+  ]
+}

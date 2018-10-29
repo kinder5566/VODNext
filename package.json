@@ -1,0 +1,44 @@
+{
+  "name": "VODNext",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "local": "cross-env NODE_ENV=local node ./server/app.js",
+    "dev": "cross-env NODE_ENV=development node ./server/app.js",
+    "start": "cross-env NODE_ENV=production node ./server/app.js",
+    "build": "next build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kinder5566/VODNext.git"
+  },
+  "author": "Kinder",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "express-async-errors": "^3.1.1",
+    "immutable": "^3.8.2",
+    "jsonwebtoken": "^8.3.0",
+    "log4js": "^3.0.6",
+    "next": "^7.0.2",
+    "next-redux-saga": "^3.0.0",
+    "next-redux-wrapper": "^2.0.0",
+    "next-routes": "^1.4.2",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0",
+    "react-markdown": "^4.0.3",
+    "react-redux": "^5.1.0",
+    "redux": "^4.0.1",
+    "redux-immutable": "^4.0.0",
+    "redux-saga": "^0.16.2",
+    "request-ip": "^2.1.1",
+    "universal-cookie": "^3.0.4",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {}
+}

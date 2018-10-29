@@ -1,0 +1,17 @@
+{
+  "headerHeight": 75,
+  "headerBackgroundColor": "26, 26, 26",
+  "headerColor": "0, 190, 6",
+
+  "contentBackgroundColor": "48, 48, 48",
+
+  "containerColor": "221, 221, 221",
+
+  "menuWidth": 250,
+  "menuBackgroundColor": "26, 26, 26",
+  "menuColor": "221, 221, 221",
+  "menuHoverColor": "0, 190, 6",
+
+  "footerHeight": 50,
+  "footerBackgroundColor": "26, 26, 26"
+}
