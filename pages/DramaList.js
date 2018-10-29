@@ -4,6 +4,11 @@ import VideoWrap from '../client/components/VideoWrap'
 import { loadDramas } from '../client/containers/Drama/actions';
 
 class DramaList extends React.Component {
+
+  static defaultProps = {
+    dramas: []
+  }
+
   componentDidMount(){
     this.props.loadDramas();
   }
@@ -16,7 +21,8 @@ class DramaList extends React.Component {
           {
             this.props.dramas.map((item, index) => (
               <div className="wrap" key={ index }>
-                <VideoWrap video={ item } theme= { this.props.theme } />
+                <VideoWrap route="dramadetail" video={ item }
+                  theme= { this.props.theme } />
               </div>
             ))
           }

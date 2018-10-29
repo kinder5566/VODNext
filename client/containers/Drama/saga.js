@@ -24,7 +24,7 @@ function* getDrama(param) {
   
   try {
     const data = yield call(get, path)
-    yield put(dramaLoaded(data.url, data.count))
+    yield put(dramaLoaded(data))
   } catch (err) {
     yield put(dramaLoadingError(err))
   }

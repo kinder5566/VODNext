@@ -25,7 +25,6 @@ export default class extends React.Component {
   }
 
   handleMenuClick(e, item) {
-    console.log(item.params.id)
     if (this.props.onMenuClick) {
       this.props.onMenuClick(item)
     }

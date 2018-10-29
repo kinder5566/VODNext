@@ -2,6 +2,7 @@ const router = require('express').Router()
 const querystring = require('querystring')
 const fs = require('fs')
 const path = require('path')
+const Cookies = require('universal-cookie')
 
 const videoSource = require(`${__root}/resources/jsons/videosource.json`)
 const ResObj = require(`${__base}/util/ResObj`)
@@ -18,6 +19,7 @@ function pad(n, width, z) {
 
 router.get('/drama', async (req, res, next) => {
   let dramas = []
+  const history = new Cookies(req.headers.cookie).get('history') || {}
   for(const file of fs.readdirSync(videoPath)) {
     const dramaPath = path.join(videoPath, file)
     if(!fs.lstatSync(dramaPath).isDirectory())
@@ -27,14 +29,15 @@ router.get('/drama', async (req, res, next) => {
       id: file,
       title: file,
       thumb: `${videoSource.networkPath}/drama/${file}/thumb.jpg`,
-      count: fs.readdirSync(dramaPath).length - 1
+      count: fs.readdirSync(dramaPath).length - 1,
+      episode: history[file] ? history[file].e : 1
     })
   }
 
   res.json(new ResObj().putData('dramas', dramas))
 })
 
-router.get('/drama/:id/:episode', async (req, res, next) => {
+router.get('/drama/:id/:episode?', async (req, res, next) => {
   const { id, episode } = req.params
   const dramaPath = path.join(videoPath, id)
   try {
@@ -43,9 +46,15 @@ router.get('/drama/:id/:episode', async (req, res, next) => {
   } catch (err) {
     throw createError(ErrorCode.NotFound)
   }
-  
+
+  const cookies = new Cookies(req.headers.cookie)
+  let history = { e: 1, t: 0 }
+  if (cookies.get('history') && cookies.get('history')[id])
+    history = cookies.get('history')[id]
+
   res.json(new ResObj()
     .putData('count', fs.readdirSync(dramaPath).length - 1)
+    .putData('history', history)
     .putData('url', `${videoSource.networkPath}/drama/${id}/${pad(episode, 2)}.mp4`))
 })
 

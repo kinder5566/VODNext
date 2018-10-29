@@ -9,11 +9,20 @@ import {
   LOAD_DRAMA_ERROR
 } from './constants'
 
+
+const initialDrama = {
+  url: '',
+  count: 0,
+  history: {
+    e: 1,
+    t: 0
+  }
+}
+
 const initialState = fromJS({
   dramas: [],
   error: false,
-  url: '',
-  count: 0
+  drama: initialDrama
 })
 
 export default function(state = initialState, action) {
@@ -32,17 +41,14 @@ export default function(state = initialState, action) {
     case LOAD_DRAMA:
       return state
         .set('error', false)
-        .set('url', '')
-        .set('count', 0)
+        .set('drama', fromJS(initialDrama))
     case LOAD_DRAMA_SUCCESS:
       return state
-        .set('url', action.url)
-        .set('count', action.count)
+        .set('drama', fromJS(action.drama))
     case LOAD_DRAMA_ERROR:
       return state
         .set('error', action.error)
-        .set('url', '')
-        .set('count', 0)
+        .set('drama', fromJS(initialDrama))
     default:
       return state
   }

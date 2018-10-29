@@ -35,11 +35,10 @@ export function loadDrama(id, episode) {
   }
 }
 
-export function dramaLoaded(url, count) {
+export function dramaLoaded(drama) {
   return {
     type: LOAD_DRAMA_SUCCESS,
-    url,
-    count
+    drama
   }
 }
 
